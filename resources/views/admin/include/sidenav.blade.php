@@ -12,7 +12,7 @@
 				</li>
 				<li>
 				<li>
-					<a class="{{ Request::routeIs('add_brand.brand', 'brand_list.brandlist') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
+					<a class="{{ Request::routeIs('add_brand.brand', 'brand_list.makelist') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
 						<div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">Brands</span></div>
 						<div class="pull-right"><span class="label label-gold">hot</span></div>
 						<div class="clearfix"></div>
@@ -22,7 +22,7 @@
 							<a class="{{ Request::routeIs('add_brand.brand') ? 'active-page' : '' }}" href="{{ route('add_brand.brand') }}">New Brand</a>
 						</li>
 						<li>
-							<a class="{{ Request::routeIs('brand_list.brandlist') ? 'active-page' : '' }}" href="{{ route('brand_list.brandlist') }}">Brand List</a>
+							<a class="{{ Request::routeIs('brand_list.makelist') ? 'active-page' : '' }}" href="{{ route('brand_list.makelist') }}">Brand List</a>
 						</li>
 					</ul>
 				</li>

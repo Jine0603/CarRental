@@ -37,4 +37,13 @@ class VechicleController extends Controller
             return redirect()->back()->with('error', implode(' ', $messages));
         }
     }
+
+    public function makelist(Request $request)
+    {
+        $make1 = Brand::all();
+
+        return view('admin.brandlist')->with([
+            'make1' => $make1
+        ]);
+    }
 }

@@ -56,9 +56,9 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('/add_brand', [DashboardController::class, 'brand'])->name('add_brand.brand');
     Route::post('/add_brand', [VechicleController::class, 'newbrand'])->name('add_brand.newbrand');
     Route::get('/add_brand', [DashboardController::class, 'brand'])->name('add_brand.brand');
-    // Route::post('/add_brand', [VechicleController::class, 'newmodel'])->name('add_brand.newmodel');
 
-    Route::get('/brand_list', [DashboardController::class, 'brandlist'])->name('brand_list.brandlist');
+    Route::get('/brand_list', [VechicleController::class, 'makelist'])->name('brand_list.makelist');
+
     Route::get('/add_vehicle', [DashboardController::class, 'vehicle'])->name('add_vehicle.vehicle');
     Route::get('/vehicle_list', [DashboardController::class, 'vechiclelist'])->name('vehicle_list.vechiclelist');
     Route::get('/bookings', [DashboardController::class, 'booking'])->name('bookings.booking');
