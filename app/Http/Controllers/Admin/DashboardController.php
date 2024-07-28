@@ -11,16 +11,6 @@ class DashboardController extends Controller
         return view('admin.dashboard');
     }
 
-    public function brand()
-    {
-        return view('admin.brand');
-    }
-
-    public function vehicle()
-    {
-        return view('admin.newcar');
-    }
-
     public function vechiclelist()
     {
         return view('admin.vechiclelist');

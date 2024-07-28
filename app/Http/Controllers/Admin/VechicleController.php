@@ -9,33 +9,45 @@ use App\Models\CarModel;
 
 class VechicleController extends Controller
 {
+    public function brand()
+    {
+        return view('admin.brand');
+    }
+
+    public function model()
+    {
+        return view('admin.model');
+    }
     public function newbrand(Request $request)
     {
 
         $brand_name = $request->input('brand');
-        $model_name = $request->input('model');
-
+        
         $messages = [];
 
-        if ($brand_name) {
-            $brand_insert = Brand::create(['make' => $brand_name]);
-            if (!$brand_insert) {
-                $messages[] = 'Failed to create brand. Please try again.';
-            }
-        }
-
-        if ($model_name) {
-            $model_insert = CarModel::create(['models' => $model_name]);
-            if (!$model_insert) {
-                $messages[] = 'Failed to create model. Please try again.';
-            }
-        }
+        Brand::create(['make' => $brand_name]);
 
         if (empty($messages)) {
             return redirect()->route('add_brand.brand')->with('success', 'Brand and Model created successfully!');
         } else {
             return redirect()->back()->with('error', implode(' ', $messages));
         }
+    }
+
+    public function newmodel(Request $request)
+    {
+        $model_name = $request->input('model');
+
+        $messages = [];
+
+        CarModel::create(['models' => $model_name]);
+
+        if (empty($messages)) {
+            return redirect()->route('add_brand.brand')->with('success', 'Brand and Model created successfully!');
+        } else {
+            return redirect()->back()->with('error', implode(' ', $messages));
+        }
+
     }
 
     public function makelist(Request $request)
@@ -45,5 +57,22 @@ class VechicleController extends Controller
         return view('admin.brandlist')->with([
             'make1' => $make1
         ]);
+    }
+    public function modellist(Request $request)
+    {
+        $model1 = CarModel::all();
+
+        return view('admin.modelist')->with([
+            'model1' => $model1
+        ]);
+    }
+
+    public function cars()
+    {
+        $fetch_make = Brand::all();
+        $fetch_model = CarModel::all();
+
+        return view('admin.newcar', compact('fetch_make', 'fetch_model'));
+
     }
 }

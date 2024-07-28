@@ -52,14 +52,19 @@ Route::post('/admin_login', [AdminLoginController::class, 'login'])->name('admin
 Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth.user'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
-    Route::get('/add_brand', [DashboardController::class, 'brand'])->name('add_brand.brand');
+    // MAKE & MODEL
+    Route::get('/add_brand', [VechicleController::class, 'brand'])->name('add_brand.brand');
     Route::post('/add_brand', [VechicleController::class, 'newbrand'])->name('add_brand.newbrand');
-    Route::get('/add_brand', [DashboardController::class, 'brand'])->name('add_brand.brand');
-
+    Route::get('/add_model', [VechicleController::class, 'model'])->name('add_model.model');
+    Route::post('/add_model', [VechicleController::class, 'newmodel'])->name('add_model.newmodel');
     Route::get('/brand_list', [VechicleController::class, 'makelist'])->name('brand_list.makelist');
+    Route::get('/model_list', [VechicleController::class, 'modellist'])->name('model_list.modellist');
 
-    Route::get('/add_vehicle', [DashboardController::class, 'vehicle'])->name('add_vehicle.vehicle');
+    // CARS
+    Route::get('/add_vehicle', [VechicleController::class, 'cars'])->name('add_cars.cars');
+    // Route::post('/add_cars', [VechicleController::class, 'cars'])->name('add_cars.cars');
+
+    // Route::get('/add_vehicle', [DashboardController::class, 'vehicle'])->name('add_vehicle.vehicle');
     Route::get('/vehicle_list', [DashboardController::class, 'vechiclelist'])->name('vehicle_list.vechiclelist');
     Route::get('/bookings', [DashboardController::class, 'booking'])->name('bookings.booking');
 });

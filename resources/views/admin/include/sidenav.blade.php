@@ -12,7 +12,7 @@
 				</li>
 				<li>
 				<li>
-					<a class="{{ Request::routeIs('add_brand.brand', 'brand_list.makelist') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
+					<a class="{{ Request::routeIs('add_brand.brand', 'add_model.model', 'brand_list.makelist', 'model_list.modellist') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
 						<div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">Brands</span></div>
 						<div class="pull-right"><span class="label label-gold">hot</span></div>
 						<div class="clearfix"></div>
@@ -22,15 +22,21 @@
 							<a class="{{ Request::routeIs('add_brand.brand') ? 'active-page' : '' }}" href="{{ route('add_brand.brand') }}">New Brand</a>
 						</li>
 						<li>
+							<a class="{{ Request::routeIs('add_model.model') ? 'active-page' : '' }}" href="{{ route('add_model.model') }}">New Model</a>
+						</li>
+						<li>
 							<a class="{{ Request::routeIs('brand_list.makelist') ? 'active-page' : '' }}" href="{{ route('brand_list.makelist') }}">Brand List</a>
+						</li>
+						<li>
+							<a class="{{ Request::routeIs('model_list.modellist') ? 'active-page' : '' }}" href="{{ route('model_list.modellist') }}">Model List</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a class="{{ Request::routeIs('add_vehicle.vehicle', 'vehicle_list.vechiclelist') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Vehicles</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a class="{{ Request::routeIs('add_cars.cars', 'vehicle_list.vechiclelist') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Vehicles</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="app_dr" class="collapse collapse-level-1">
 						<li>
-							<a class="{{ Request::routeIs('add_vehicle.vehicle') ? 'active-page' : '' }}" href="{{ route('add_vehicle.vehicle')}}">New Vehicle</a>
+							<a class="{{ Request::routeIs('add_cars.cars') ? 'active-page' : '' }}" href="{{ route('add_cars.cars')}}">New Vehicle</a>
 						</li>
 						<li>
 							<a class="{{ Request::routeIs('vehicle_list.vechiclelist') ? 'active-page' : '' }}" href="{{ route('vehicle_list.vechiclelist')}}">Vehicles List</a>

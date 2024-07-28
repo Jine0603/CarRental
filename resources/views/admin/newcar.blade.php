@@ -13,6 +13,8 @@
 
 		<!-- Custom CSS -->
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
+		<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+		<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet" />
 	</head>
 	<body>
 		<!--Preloader-->
@@ -57,21 +59,27 @@
 								<div class="panel-wrapper collapse in">
 									<div class="panel-body">
 										<div class="form-wrap">
-											<form action="#">
+											<form method="post" action="">
+											@csrf
 												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-info-outline mr-10"></i>about product</h6>
 												<hr class="light-grey-hr"/>
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label mb-10">Product Name</label>
+															<label class="control-label mb-10">Vehicle Name</label>
 															<input type="text" id="firstName" class="form-control" placeholder="Rounded Chair">
 														</div>
 													</div>
 													<!--/span-->
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label mb-10">Sub text</label>
-															<input type="text" id="lastName" class="form-control" placeholder="globe type chair for rest">
+															<label class="control-label mb-10">Brand Name</label>
+															<select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+																<option value="">Select Type of Brand</option>
+																@foreach ($fetch_make as $brand)
+																	<option value="{{ $brand->id }}">{{ $brand->make }}</option>
+																@endforeach
+															</select>
 														</div>
 													</div>
 													<!--/span-->
@@ -80,33 +88,42 @@
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label mb-10">Category</label>
+															<label class="control-label mb-10">Model</label>
 															<select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-																<option value="Category 1">Category 1</option>
-																<option value="Category 2">Category 2</option>
-																<option value="Category 3">Category 5</option>
-																<option value="Category 4">Category 4</option>
+															    <option value="">Select Type of Brand</option>
+																@foreach ($fetch_model as $model)
+																	<option value="{{ $model->id }}">{{ $model->models }}</option>
+																@endforeach
 															</select>
 														</div>
 													</div>
 													<!--/span-->
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label mb-10">Status</label>
-															<div class="radio-list">
-																<div class="radio-inline pl-0">
-																	<div class="radio radio-info">
-																		<input type="radio" name="radio" id="radio1" value="option1">
-																		<label for="radio1">Published</label>
-																	</div>
-																</div>
-																<div class="radio-inline">
-																	<div class="radio radio-info">
-																		<input type="radio" name="radio" id="radio2" value="option2">
-																		<label for="radio2">Draft</label>
-																	</div>
-																</div>
-															</div>
+															<label class="control-label mb-10">Fuel Type</label>
+															<select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+															    <option value="">Select Type</option>
+																<option value="petrol">PETROL</option>
+																<option value="diesel">DIESEL</option>
+																<option value="cng">CNG</option>
+															</select>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!--/row-->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Model Year</label>
+															<input type="text" class="form-control" id="exampleInputuname" placeholder="153">
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Seating Capacity</label>
+															<input type="text" class="form-control" id="exampleInputuname_1" placeholder="36%">
 														</div>
 													</div>
 													<!--/span-->
@@ -135,43 +152,24 @@
 													<!--/span-->
 												</div>
 												<div class="seprator-block"></div>
-												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Description</h6>
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Vehicle Title</h6>
 												<hr class="light-grey-hr"/>
 												<div class="row">
 													<div class="col-md-12">
 														<div class="form-group">
-															<textarea class="form-control" rows="4">Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. but the majority have suffered alteration in some form, by injected humour</textarea>
+															<textarea class="form-control" rows="4"></textarea>
 														</div>
 													</div>
 												</div>
-												<!--/row-->
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label mb-10">Meta Title</label>
-															<input type="text" class="form-control">
-														</div>
-													</div>
-													<!--/span-->
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label mb-10">Meta Keyword</label>
-															<input type="text" class="form-control">
-														</div>
-													</div>
-												</div>
-												<div class="seprator-block"></div>
 												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-collection-image mr-10"></i>upload image</h6>
 												<hr class="light-grey-hr"/>
 												<div class="row">
-													<div class="col-lg-12">
-														<div class="img-upload-wrap">
-															<img class="img-responsive" src="img/chair.jpg" alt="upload_img"> 
-														</div>
-														<div class="fileupload btn btn-info btn-anim"><i class="fa fa-upload"></i><span class="btn-text">Upload new image</span>
-															<input type="file" class="upload">
-														</div>
-													</div>
+												<div class="col-sm-6 ol-md-6 col-xs-12">
+												    <div class="mt-40">
+														<input type="file" id="input-file-now" class="dropify filepond" />
+												    </div>	
+
+												</div>
 												</div>
 												<div class="seprator-block"></div>
 												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
@@ -297,6 +295,9 @@
 		
 		<!-- jQuery -->
 		<script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+		    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
 		
 		<!-- Bootstrap Core JavaScript -->
 		<script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -316,5 +317,17 @@
 		<!-- Init JavaScript -->
 		<script src="dist/js/init.js"></script>
 		
+		<script>
+// get a collection of elements with class filepond
+const inputElements = document.querySelectorAll('input.filepond');
+
+// loop over input elements
+Array.from(inputElements).forEach(inputElement => {
+
+  // create a FilePond instance at the input element location
+  FilePond.create(inputElement);
+
+})
+</script>
 	</body>
 </html>

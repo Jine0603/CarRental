@@ -75,7 +75,7 @@
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-wrap">
-													<form class="form-horizontal" method="POST" action="{{ route('add_brand.newbrand') }}">
+													<form class="form-horizontal" method="POST" action="{{ route('add_model.newmodel') }}">
 													@csrf
 														<div class="form-body">
 															<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-account mr-10"></i>Person's Info</h6>
@@ -84,9 +84,9 @@
 															<div class="row">
 																<div class="col-md-10">
 																	<div class="form-group">
-																		<label class="control-label col-md-3">Make</label>
+																		<label class="control-label col-md-3">Model</label>
 																		<div class="col-md-9">
-																			<input type="text" id="brand" name="brand" class="form-control">
+																			<input type="text" id="model" name="model" class="form-control">
 																		</div>
 																	</div>
 																</div>
@@ -103,6 +103,7 @@
 																		</div>
 																	</div>
 																</div>
+																<div class="col-md-6"> </div>
 															</div>
 														</div>
 													</form>
