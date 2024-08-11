@@ -78,7 +78,7 @@
 												<a href="javascript:void(0);" class="font-18 txt-grey pull-left sa-warning"><i class="zmdi zmdi-close"></i></a>
 											</div>
 											
-											<a href="javascript:void(0);"> <img src="{{ $car['image'] }}" class="img-responsive" alt="{{ $car['name'] }}" /> </a>
+											<a href="javascript:void(0);"> <img src="{{ asset($car['img']) }}" class="img-responsive" alt="{{ $car['img'] }}" /> </a>
 										</div>
 										<div class="info">
                                     <h6>{{ $car['car_name'] }}</h6>
