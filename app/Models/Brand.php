@@ -9,6 +9,7 @@ class Brand extends Model
 {
     protected $table = 'car_brand';
     protected $fillable = [
+        'make_id',
         'make',
     ];
 }

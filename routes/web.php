@@ -61,10 +61,10 @@ Route::middleware(['auth.user'])->group(function () {
     Route::get('/model_list', [VechicleController::class, 'modellist'])->name('model_list.modellist');
 
     // CARS
-    Route::get('/add_vehicle', [VechicleController::class, 'cars'])->name('add_cars.cars');
-    // Route::post('/add_cars', [VechicleController::class, 'cars'])->name('add_cars.cars');
+    Route::get('/add_vehicle', [VechicleController::class, 'cars'])->name('add_vehicle.cars');
+    Route::post('/add_vehicle', [VechicleController::class, 'new_car'])->name('add_vehicle.new_car');
 
     // Route::get('/add_vehicle', [DashboardController::class, 'vehicle'])->name('add_vehicle.vehicle');
-    Route::get('/vehicle_list', [DashboardController::class, 'vechiclelist'])->name('vehicle_list.vechiclelist');
+    Route::get('/vehicle_list', [VechicleController::class, 'details_car'])->name('vehicle_list.details_car');
     Route::get('/bookings', [DashboardController::class, 'booking'])->name('bookings.booking');
 });

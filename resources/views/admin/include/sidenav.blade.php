@@ -33,13 +33,13 @@
 					</ul>
 				</li>
 				<li>
-					<a class="{{ Request::routeIs('add_cars.cars', 'vehicle_list.vechiclelist') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Vehicles</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a class="{{ Request::routeIs('add_vehicle.cars', 'vehicle_list.details_car') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Vehicles</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="app_dr" class="collapse collapse-level-1">
 						<li>
-							<a class="{{ Request::routeIs('add_cars.cars') ? 'active-page' : '' }}" href="{{ route('add_cars.cars')}}">New Vehicle</a>
+							<a class="{{ Request::routeIs('add_vehicle.cars') ? 'active-page' : '' }}" href="{{ route('add_vehicle.cars')}}">New Vehicle</a>
 						</li>
 						<li>
-							<a class="{{ Request::routeIs('vehicle_list.vechiclelist') ? 'active-page' : '' }}" href="{{ route('vehicle_list.vechiclelist')}}">Vehicles List</a>
+							<a class="{{ Request::routeIs('vehicle_list.details_car') ? 'active-page' : '' }}" href="{{ route('vehicle_list.details_car')}}">Vehicles List</a>
 						</li>
 					</ul>
 				</li>

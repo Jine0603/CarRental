@@ -59,7 +59,7 @@
 								<div class="panel-wrapper collapse in">
 									<div class="panel-body">
 										<div class="form-wrap">
-											<form method="post" action="">
+											<form method="post" action="{{ route('add_vehicle.new_car') }}" enctype="multipart/form-data">
 											@csrf
 												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-info-outline mr-10"></i>about product</h6>
 												<hr class="light-grey-hr"/>
@@ -67,17 +67,17 @@
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label mb-10">Vehicle Name</label>
-															<input type="text" id="firstName" class="form-control" placeholder="Rounded Chair">
+															<input type="text" id="car_name" name="car_name" class="form-control" placeholder="Rounded Chair">
 														</div>
 													</div>
 													<!--/span-->
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label mb-10">Brand Name</label>
-															<select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+															<select class="form-control" id="brand_car" name="brand_car" data-placeholder="Choose a Category">
 																<option value="">Select Type of Brand</option>
 																@foreach ($fetch_make as $brand)
-																	<option value="{{ $brand->id }}">{{ $brand->make }}</option>
+																	<option value="{{ $brand->brand_id }}">{{ $brand->make }}</option>
 																@endforeach
 															</select>
 														</div>
@@ -89,10 +89,10 @@
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label mb-10">Model</label>
-															<select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+															<select class="form-control" id="model" name="model" data-placeholder="Choose a Category" tabindex="1">
 															    <option value="">Select Type of Brand</option>
 																@foreach ($fetch_model as $model)
-																	<option value="{{ $model->id }}">{{ $model->models }}</option>
+																	<option value="{{ $model->model_id }}">{{ $model->models }}</option>
 																@endforeach
 															</select>
 														</div>
@@ -101,7 +101,7 @@
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label mb-10">Fuel Type</label>
-															<select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+															<select class="form-control" id="fuel" name="fuel" data-placeholder="Choose a Category" tabindex="1">
 															    <option value="">Select Type</option>
 																<option value="petrol">PETROL</option>
 																<option value="diesel">DIESEL</option>
@@ -116,14 +116,14 @@
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label mb-10">Model Year</label>
-															<input type="text" class="form-control" id="exampleInputuname" placeholder="153">
+															<input type="text" class="form-control" id="model_year" name="model_year" placeholder="153">
 														</div>
 													</div>
 													<!--/span-->
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label mb-10">Seating Capacity</label>
-															<input type="text" class="form-control" id="exampleInputuname_1" placeholder="36%">
+															<input type="text" class="form-control" id="seating" name="seating" placeholder="36%">
 														</div>
 													</div>
 													<!--/span-->
@@ -135,7 +135,7 @@
 															<label class="control-label mb-10">Price</label>
 															<div class="input-group">
 																<div class="input-group-addon"><i class="ti-money"></i></div>
-																<input type="text" class="form-control" id="exampleInputuname" placeholder="153">
+																<input type="text" class="form-control" id="car_price" name="car_price" placeholder="153">
 															</div>
 														</div>
 													</div>
@@ -145,7 +145,7 @@
 															<label class="control-label mb-10">Discount</label>
 															<div class="input-group">
 																<div class="input-group-addon"><i class="ti-cut"></i></div>
-																<input type="text" class="form-control" id="exampleInputuname_1" placeholder="36%">
+																<input type="text" class="form-control" id="discount" name="discount" placeholder="36%">
 															</div>
 														</div>
 													</div>
@@ -157,7 +157,7 @@
 												<div class="row">
 													<div class="col-md-12">
 														<div class="form-group">
-															<textarea class="form-control" rows="4"></textarea>
+															<textarea class="form-control" name="details" id="details" rows="4"></textarea>
 														</div>
 													</div>
 												</div>
@@ -166,7 +166,7 @@
 												<div class="row">
 												<div class="col-sm-6 ol-md-6 col-xs-12">
 												    <div class="mt-40">
-														<input type="file" id="input-file-now" class="dropify filepond" />
+														<input type="file" id="img_file" name="img_file[]" class="" multiple/>
 												    </div>	
 
 												</div>
@@ -175,88 +175,76 @@
 												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
 												<hr class="light-grey-hr"/>
 												
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Brand">
+												<div class="form-group">
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="airconditioner" name="airconditioner" value="1">
+															<label for="airconditioner"> Air Conditioner </label>
 														</div>
 													</div>
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Stellar">
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="powerdoorlocks" name="powerdoorlocks" value="1">
+															<label for="powerdoorlocks"> Power Door Locks </label>
 														</div>
 													</div>
-												</div>
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Delivery Condition">
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1">
+															<label for="antilockbrakingsys"> AntiLock Braking System </label>
 														</div>
 													</div>
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Knock Down">
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Seat Lock Included">
-														</div>
-													</div>
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Yes">
-														</div>
+													<div class="checkbox checkbox-inline">
+														<input type="checkbox" id="brakeassist" name="brakeassist" value="1">
+														<label for="brakeassist"> Brake Assist </label>
 													</div>
 												</div>
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Type">
+												<div class="form-group">
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="powersteering" name="powersteering" value="1">
+															<label for="powersteering"> Power Steering </label>
 														</div>
 													</div>
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Office Chair">
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="driverairbag" name="driverairbag" value="1">
+															<label for="driverairbag"> Driver Airbag </label>
 														</div>
 													</div>
-												</div>
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Style">
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="passengerairbag" name="passengerairbag" value="1">
+															<label for="passengerairbag"> Passenger Airbag </label>
 														</div>
 													</div>
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Contemporary & Modern">
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Wheels Included">
-														</div>
-													</div>
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Yes">
-														</div>
+													<div class="checkbox checkbox-inline">
+														<input type="checkbox" id="powerwindow" name="powerwindow" value="1">
+														<label for="powerwindow"> Power Windows </label>
 													</div>
 												</div>
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Upholstery Included">
+												<div class="form-group">
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="cdplayer" name="cdplayer" value="1">
+															<label for="cdplayer"> CD Player </label>
 														</div>
 													</div>
-													<div class="col-sm-6">
-														<div class="form-group">
-															<input type="text" class="form-control" placeholder="Yes">
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="centrallocking" name="centrallocking" value="1">
+															<label for="centrallocking"> Central Locking </label>
 														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="checkbox checkbox-inline">
+															<input type="checkbox" id="crashcensor" name="crashcensor" value="1">
+															<label for="crashcensor"> Crash Sensor </label>
+														</div>
+													</div>
+													<div class="checkbox checkbox-inline">
+														<input type="checkbox" id="leatherseats" name="leatherseats" value="1">
+														<label for="leatherseats"> Leather Seats </label>
 													</div>
 												</div>
 												<div class="form-actions">
@@ -318,6 +306,8 @@
 		<script src="dist/js/init.js"></script>
 		
 		<script>
+			var name = $('img_file').val();
+			console.log(name);
 // get a collection of elements with class filepond
 const inputElements = document.querySelectorAll('input.filepond');
 
@@ -325,7 +315,11 @@ const inputElements = document.querySelectorAll('input.filepond');
 Array.from(inputElements).forEach(inputElement => {
 
   // create a FilePond instance at the input element location
-  FilePond.create(inputElement);
+  FilePond.create(inputElement, {
+    allowMultiple: true,
+    maxFiles: 4,
+    acceptedFileTypes: ['image/jpeg','image/jpg', 'image/png', 'image/gif']
+  });
 
 })
 </script>
